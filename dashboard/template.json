@@ -1,0 +1,21 @@
+{
+  "analysis": {
+    "dataSets": [{
+      "arn": "arn:aws:quicksight:us-west-2:123456789012:dataset/sensor-data",
+      "placeholders": [{
+        "name": "factoryId",
+        "values": ["$.factoryId"]
+      }]
+    }],
+    "sheets": [{
+      "name": "EquipmentHealth",
+      "visuals": [{
+        "type": "LINE_CHART",
+        "title": "Temperature Trends",
+        "dataSetIdentifier": "sensor-data",
+        "xAxis": [{"column": "hour"}],
+        "yAxis": [{"column": "avg_temp"}]
+      }]
+    }]
+  }
+}

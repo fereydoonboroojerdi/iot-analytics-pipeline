@@ -1,0 +1,27 @@
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.so
+
+# CDK asset outputs
+cdk.out/
+
+# Test output
+*.log
+
+# AWS credentials and IDE settings
+.env
+*.pem
+
+# Node modules (if using JS/TS in CDK)
+node_modules/
+package-lock.json
+
+# Jupyter Notebooks checkpoints
+.ipynb_checkpoints/
+
+# VS Code
+.vscode/
+
+cdk.out/

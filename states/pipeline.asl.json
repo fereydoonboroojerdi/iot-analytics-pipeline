@@ -1,0 +1,35 @@
+{
+  "Comment": "IoT Data Pipeline Orchestration",
+  "StartAt": "ProcessBatch",
+  "States": {
+    "ProcessBatch": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "arn:aws:lambda:us-west-2:123456789012:function:batch-processor",
+        "Payload": {"Input.$": "$"}
+      },
+      "Next": "CheckAnomalies"
+    },
+    "CheckAnomalies": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$.anomalyDetected",
+          "BooleanEquals": true,
+          "Next": "TriggerAlert"
+        }
+      ],
+      "Default": "UpdateDashboard"
+    },
+    "TriggerAlert": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::sns:publish",
+      "Parameters": {
+        "TopicArn": "arn:aws:sns:us-west-2:123456789012:alerts",
+        "Message.$": "$.anomalyDetails"
+      },
+      "End": true
+    }
+  }
+}

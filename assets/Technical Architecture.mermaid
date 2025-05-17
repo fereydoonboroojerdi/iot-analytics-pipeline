@@ -1,0 +1,15 @@
+graph LR
+A[IoT Devices] -->|MQTT| B(IoT Core)
+B -->|Rules| C[Kinesis Data Stream]
+C --> D[Lambda Processor]
+D --> E{Anomaly?}
+E -->|Yes| F[SNS Alert]
+E -->|No| G[Redshift Materialized View]
+G --> H[QuickSight Dashboard]
+H --> I[Factory Floor Display]
+C --> J[Kinesis Firehose]
+J --> K[S3 Data Lake]
+K --> L[Glue Catalog]
+L --> M[Athena Queries]
+D --> N[Step Functions]
+N --> O[Redshift ML Training]
