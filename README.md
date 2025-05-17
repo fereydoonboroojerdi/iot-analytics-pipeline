@@ -5,7 +5,42 @@ This repository implements a production-grade IoT analytics pipeline using AWS s
 
 Project Structure
 
-.
+```text
+.  
+├── lib/                      - Infrastructure-as-code (AWS CDK)  
+│   └── pipeline-stack.ts  
+├── lambda/                   - Stream processor Lambda function  
+│   └── processor.py  
+├── sql/                      - Redshift table definitions  
+│   └── sensor_schema.sql  
+├── states/                   - Step Functions orchestration logic  
+│   └── pipeline.asl.json  
+├── dashboard/                - QuickSight dashboard layout  
+│   └── template.json  
+├── scripts/                  - Setup and deployment shell scripts  
+│   ├── deploy_infrastructure.sh  
+│   ├── register_devices.sh  
+│   └── access_dashboard.sh  
+├── simulator/                - MQTT data simulator  
+│   └── data_simulator.py  
+├── cloudformation_templates/ - Raw CloudFormation templates from CDK synth  
+│   ├── IotPipelineStack.template.json  
+│   └── FastFirehoseStack.template.json  
+├── assets/                   - Architecture diagram and screenshots  
+│   ├── technical_architecture.png  
+│   ├── Technical Architecture.mermaid  
+│   ├── firehose_config.png  
+│   ├── lambda_execution_log.png  
+│   ├── lambda_log_success.png  
+│   ├── lambda_trigger_kinesis.png  
+│   └── S3bucket.png  
+├── .gitignore  
+├── LICENSE  
+├── requirements.txt  
+├── CONTRIBUTING.md  
+└── README.md
+```
+
 ├── lib/                      - Infrastructure-as-code (AWS CDK)
 │   └── pipeline-stack.ts
 ├── lambda/                   - Stream processor Lambda function
